@@ -1,7 +1,6 @@
-package main
+package hello_go
 
 import (
-	"fmt"
 	"github.com/labstack/echo"
 	"net/http"
 )
@@ -14,8 +13,4 @@ func GoWeb() {
 		return c.String(http.StatusOK, "Hello, World!")
 	})
 	e.Logger.Fatal(e.Start(":1323"))
-}
-
-func main() {
-	fmt.Println("Hello")
 }
