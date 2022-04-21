@@ -1,16 +1,15 @@
-package hello_go
+package main
 
 import (
-	"github.com/labstack/echo"
-	"net/http"
+	"github.com/gin-gonic/gin"
 )
 
-const A = 10
-
-func GoWeb() {
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
+func main() {
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
 	})
-	e.Logger.Fatal(e.Start(":1323"))
+	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
